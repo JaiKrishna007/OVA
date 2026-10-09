@@ -172,7 +172,39 @@ export const LoginPage: React.FC = () => {
                   <HeartPulse className="w-3.5 h-3.5 text-[#F08080]" />
                   patient.priya
                 </div>
-                <div className="text-[10px] text-slate-600 mt-0.5 font-medium">Patient (Priya S.)</div>
+                <div className="text-[10px] text-slate-600 mt-0.5 font-medium">Patient (P-101)</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleQuickSelect('patient.p102')}
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
+                  username === 'patient.p102'
+                    ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
+                    : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
+                }`}
+              >
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#822828]">
+                  <HeartPulse className="w-3.5 h-3.5 text-[#F08080]" />
+                  patient.p102
+                </div>
+                <div className="text-[10px] text-slate-600 mt-0.5 font-medium">Patient (P-102)</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleQuickSelect('patient.p105')}
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
+                  username === 'patient.p105'
+                    ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
+                    : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
+                }`}
+              >
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#822828]">
+                  <HeartPulse className="w-3.5 h-3.5 text-[#F08080]" />
+                  patient.p105
+                </div>
+                <div className="text-[10px] text-slate-600 mt-0.5 font-medium">Patient (P-105)</div>
               </button>
 
               <button
