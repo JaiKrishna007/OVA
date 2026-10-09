@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FertilityBackground } from '../components/FertilityBackground';
+import { Baby3D } from '../components/Baby3D';
 import { HeartPulse, Lock, User, AlertCircle, ArrowRight, ShieldCheck, Stethoscope, Building2 } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
@@ -51,6 +52,9 @@ export const LoginPage: React.FC = () => {
     <div className="min-h-screen relative flex flex-col justify-center py-12 sm:px-6 lg:px-8 overflow-hidden selection:bg-[#FBC4AB]">
       {/* 16:9 Dynamic Fertility Background */}
       <FertilityBackground />
+
+      {/* Floating Interactive 3D Embryo Vista */}
+      <Baby3D />
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         <div className="flex justify-center">

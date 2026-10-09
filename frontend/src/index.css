@@ -101,3 +101,88 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   box-shadow: 0 0 0 3px rgba(240, 128, 128, 0.22);
 }
 
+/* 3D Baby Embryo Animations & Shaders */
+@keyframes babyFloat3D {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg) scale(1);
+  }
+  33% {
+    transform: translateY(-9px) rotateX(5deg) rotateY(4deg) scale(1.02);
+  }
+  66% {
+    transform: translateY(5px) rotateX(-4deg) rotateY(-5deg) scale(0.99);
+  }
+}
+
+@keyframes babyHeartbeat {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  15% {
+    opacity: 0.75;
+    transform: scale(1.12);
+  }
+  28% {
+    opacity: 0.5;
+    transform: scale(1.03);
+  }
+  42% {
+    opacity: 0.8;
+    transform: scale(1.15);
+  }
+  60% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+}
+
+@keyframes orbitSpin3D {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes orbitSpinReverse3D {
+  from {
+    transform: rotateZ(360deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+
+@keyframes specularGleam {
+  0%, 100% {
+    opacity: 0.15;
+    transform: translateX(-40%) translateY(-20%) rotate(25deg);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translateX(30%) translateY(20%) rotate(35deg);
+  }
+}
+
+.animate-baby-float {
+  animation: babyFloat3D 6.5s ease-in-out infinite;
+}
+
+.animate-baby-heartbeat {
+  animation: babyHeartbeat 3.2s ease-in-out infinite;
+}
+
+.animate-orbit-3d {
+  animation: orbitSpin3D 22s linear infinite;
+}
+
+.animate-orbit-reverse-3d {
+  animation: orbitSpinReverse3D 30s linear infinite;
+}
+
+.animate-specular-gleam {
+  animation: specularGleam 5.5s ease-in-out infinite;
+}
+

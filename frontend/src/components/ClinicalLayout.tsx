@@ -3,6 +3,7 @@ import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { systemApi } from '../services/api';
 import { FertilityBackground } from './FertilityBackground';
+import { Baby3D } from './Baby3D';
 import {
   Users,
   LogOut,
@@ -119,6 +120,9 @@ export const ClinicalLayout: React.FC<ClinicalLayoutProps> = ({ children }) => {
     <div className="min-h-screen relative flex flex-col text-slate-900 antialiased selection:bg-[#FBC4AB] selection:text-slate-900 overflow-x-hidden">
       {/* Dynamic 16:9 Full-Screen Fertility Background */}
       <FertilityBackground />
+
+      {/* Floating Interactive 3D Embryo Vista */}
+      <Baby3D />
 
       {/* 1. Persistent Top Bar */}
       <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-[#FBC4AB]/40 shadow-peach-xs transition-colors">

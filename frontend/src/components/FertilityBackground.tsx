@@ -134,37 +134,12 @@ export const FertilityBackground: React.FC = () => {
         <circle cx="1780" cy="265" r="5" fill="#F5B8B1" fillOpacity="0.32" />
         <circle cx="1035" cy="175" r="4.5" fill="#F5B8B1" fillOpacity="0.3" />
 
-        {/* Bottom-Left Concentric Embryo Capsule Overlay */}
-        <g id="embryo-capsule" transform="translate(180, 810)">
+        {/* Bottom-Left Concentric Ambient Rings */}
+        <g id="embryo-capsule-rings" transform="translate(180, 810)">
           {/* Subtle Outer Concentric Orbit Rings */}
-          <circle cx="0" cy="0" r="120" stroke="#F5B8B1" strokeWidth="1.2" strokeOpacity="0.35" fill="none" />
-          <circle cx="0" cy="0" r="102" stroke="#FFF0ED" strokeWidth="1.8" strokeOpacity="0.5" fill="none" />
-          <circle cx="0" cy="0" r="84" stroke="#F5B8B1" strokeWidth="1.5" strokeOpacity="0.45" fill="url(#embryoGlow)" />
-          <circle cx="0" cy="0" r="64" stroke="#FBC4AB" strokeWidth="1" strokeOpacity="0.4" fill="none" />
-
-          {/* Delicate Embryo Silhouette vector */}
-          <path
-            d="M -5 -38
-               C 12 -38, 26 -24, 26 -8
-               C 26 6, 16 18, 20 30
-               C 23 39, 32 44, 28 52
-               C 23 60, 6 62, -8 52
-               C -22 42, -26 28, -26 15
-               C -26 -5, -16 -18, -18 -26
-               C -20 -33, -15 -38, -5 -38 Z"
-            fill="#F08080"
-            fillOpacity="0.32"
-          />
-          {/* Embryo Head & Core Definition */}
-          <circle cx="6" cy="-14" r="18" fill="#F08080" fillOpacity="0.38" />
-          {/* Umbilical Arc */}
-          <path
-            d="M 12 18 C 28 24, 42 36, 44 54 C 45 68, 38 78, 30 84"
-            stroke="#F5B8B1"
-            strokeWidth="1.5"
-            strokeOpacity="0.5"
-            fill="none"
-          />
+          <circle cx="0" cy="0" r="120" stroke="#F5B8B1" strokeWidth="1.2" strokeOpacity="0.25" fill="none" />
+          <circle cx="0" cy="0" r="102" stroke="#FFF0ED" strokeWidth="1.5" strokeOpacity="0.35" fill="none" />
+          <circle cx="0" cy="0" r="84" stroke="#F5B8B1" strokeWidth="1.2" strokeOpacity="0.25" fill="url(#embryoGlow)" />
         </g>
       </svg>
     </div>
