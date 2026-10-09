@@ -216,11 +216,11 @@ export const ClinicalLayout: React.FC<ClinicalLayoutProps> = ({ children }) => {
         </div>
       </aside>
 
-      {/* 3. Main Body: Left Nav + Content */}
-      <div className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6">
-        {/* Left Nav */}
-        <aside className="w-full md:w-60 flex-shrink-0">
-          <nav className="bg-white/90 backdrop-blur-md rounded-2xl border border-[#FBC4AB]/40 p-3 shadow-peach-xs space-y-1">
+      {/* 3. Main Body: Left Nav + Content (Elevated above background 3D baby) */}
+      <div className="relative z-20 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6">
+        {/* Left Nav Column */}
+        <aside className="w-full md:w-60 flex-shrink-0 relative z-20">
+          <nav className="bg-white/95 backdrop-blur-md rounded-2xl border border-[#FBC4AB]/40 p-3 shadow-peach-xs space-y-1 relative z-20">
             <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-[#822828]/70">
               Navigation
             </div>

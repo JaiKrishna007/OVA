@@ -13,8 +13,6 @@ import React, { useState, useEffect, useRef } from 'react';
  */
 export const Baby3D: React.FC = () => {
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const [rippleKey, setRippleKey] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,32 +34,22 @@ export const Baby3D: React.FC = () => {
   }, []);
 
   // Compute smooth 3D tilt angles based on mouse offset
-  const tiltX = -mouseOffset.y * (isHovered ? 28 : 16);
-  const tiltY = mouseOffset.x * (isHovered ? 28 : 16);
-
-  const handleBubbleClick = () => {
-    setRippleKey((prev) => prev + 1);
-  };
+  const tiltX = -mouseOffset.y * 18;
+  const tiltY = mouseOffset.x * 18;
 
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-20 select-none cursor-pointer group pointer-events-auto"
+      className="fixed bottom-2 left-2 sm:bottom-4 sm:left-4 md:bottom-6 md:left-6 z-0 select-none pointer-events-none"
       style={{ perspective: '1000px' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        setMouseOffset({ x: 0, y: 0 });
-      }}
-      onClick={handleBubbleClick}
-      title="Interactive 3D Embryo Vista - Click to interact"
+      title="3D Embryo Vista"
     >
       {/* 3D Transformed Card Container */}
       <div
         className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 transition-transform duration-300 ease-out animate-baby-float"
         style={{
           transformStyle: 'preserve-3d',
-          transform: `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${isHovered ? 1.05 : 1})`,
+          transform: `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1)`,
         }}
       >
         {/* 1. Ambient Heartbeat Aura Pulse (Back Layer, translateZ -30px) */}
@@ -114,15 +102,6 @@ export const Baby3D: React.FC = () => {
 
           {/* Secondary Specular Sweeping Gleam */}
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/25 to-transparent pointer-events-none animate-specular-gleam" />
-
-          {/* Fluid Click Ripple Effect */}
-          {rippleKey > 0 && (
-            <div
-              key={rippleKey}
-              className="absolute inset-0 rounded-full border-2 border-white/90 animate-ping pointer-events-none"
-              style={{ animationDuration: '900ms' }}
-            />
-          )}
         </div>
 
         {/* 4. Bioluminescent Floating Micro-Dust Particles */}
@@ -138,16 +117,6 @@ export const Baby3D: React.FC = () => {
           className="absolute top-1/2 -left-3 w-1.5 h-1.5 rounded-full bg-[#FFDAB9] shadow-[0_0_6px_white] animate-pulse"
           style={{ animationDuration: '2.8s' }}
         />
-
-        {/* 5. Interactive Tooltip / Badge */}
-        <div
-          className={`absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-md border border-[#FBC4AB]/60 text-[10px] font-bold text-[#822828] shadow-peach-sm whitespace-nowrap transition-all duration-300 pointer-events-none flex items-center gap-1 ${
-            isHovered ? 'opacity-100 -translate-y-1 scale-100' : 'opacity-0 translate-y-1 scale-95'
-          }`}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#F08080] animate-ping" />
-          <span>3D Embryo • Live</span>
-        </div>
       </div>
     </div>
   );
