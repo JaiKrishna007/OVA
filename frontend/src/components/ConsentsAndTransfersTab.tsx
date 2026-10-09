@@ -240,7 +240,7 @@ export const ConsentsAndTransfersTab: React.FC<ConsentsAndTransfersTabProps> = (
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            Chart Consents & Transfers
+            Hospital Transfers
           </button>
           <button
             onClick={() => setActiveSubView('inbox')}
@@ -385,21 +385,21 @@ export const ConsentsAndTransfersTab: React.FC<ConsentsAndTransfersTabProps> = (
         </div>
       ) : (
         <>
-          {/* SECTION 1: Patient Consent Records */}
-          <div className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 shadow-2xs space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <ShieldCheck className="w-4 h-4" />
+          {/* SECTION 1: Patient Consent Records (Exclusive to Patient Account) */}
+          {isPatient && (
+            <div className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 shadow-2xs space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-900">Patient Consent Authorizations</h3>
+                    <p className="text-xs text-slate-500">Legal medical data sharing consents on file</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900">Patient Consent Authorizations</h3>
-                  <p className="text-xs text-slate-500">Legal medical data sharing consents on file</p>
-                </div>
-              </div>
 
-              <div className="flex items-center gap-2">
-                {isPatient ? (
+                <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setIsGrantModalOpen(true)}
@@ -408,96 +408,82 @@ export const ConsentsAndTransfersTab: React.FC<ConsentsAndTransfersTabProps> = (
                     <PlusCircle className="w-3.5 h-3.5" />
                     <span>Grant New Consent</span>
                   </button>
-                ) : (
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold text-slate-600 bg-slate-100 rounded-lg border border-slate-200">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#F08080]" />
-                    <span>Patient-Exclusive Authority</span>
-                  </div>
-                )}
-                <span className="text-xs font-mono bg-slate-100 px-2 py-0.5 rounded-full text-slate-600">
-                  {consents.length} on file
-                </span>
+                  <span className="text-xs font-mono bg-slate-100 px-2 py-0.5 rounded-full text-slate-600">
+                    {consents.length} on file
+                  </span>
+                </div>
               </div>
-            </div>
 
-            {!isPatient && (
-              <div className="p-3 bg-[#FFF5F2] border border-[#F8AD9D]/50 rounded-xl text-xs text-[#822828] flex items-center gap-2.5">
-                <ShieldCheck className="w-4 h-4 text-[#F08080] shrink-0" />
-                <span>
-                  <strong>Patient-Exclusive Authority:</strong> Per healthcare data privacy governance, granting access and authorizing record transfers can only be performed directly by the patient. Clinicians and administrators cannot grant consent on behalf of patients.
-                </span>
-              </div>
-            )}
+              {consents.length === 0 ? (
+                <div className="p-6 text-center text-slate-500 text-xs bg-slate-50 rounded-lg border border-slate-100">
+                  No active cross-clinic consent documents recorded for this chart. Click &ldquo;Grant New Consent&rdquo; to author an authorization.
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {consents.map((c) => {
+                    const isRevoked = c.status === 'REVOKED';
+                    const isActive = c.status === 'ACTIVE';
 
-            {consents.length === 0 ? (
-              <div className="p-6 text-center text-slate-500 text-xs bg-slate-50 rounded-lg border border-slate-100">
-                No active cross-clinic consent documents recorded for this chart. Click &ldquo;Grant New Consent&rdquo; to author an authorization.
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {consents.map((c) => {
-                  const isRevoked = c.status === 'REVOKED';
-                  const isActive = c.status === 'ACTIVE';
-
-                  return (
-                    <div
-                      key={c.id}
-                      className="p-4 rounded-lg border border-slate-200 hover:border-slate-300 transition-colors bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs"
-                    >
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="font-mono text-xs font-bold text-slate-800">{c.id}</span>
-                          <span
-                            className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${
-                              isActive
-                                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                : isRevoked
-                                ? 'bg-rose-50 text-rose-700 border-rose-200'
-                                : 'bg-amber-50 text-amber-700 border-amber-200'
-                            }`}
-                          >
-                            {c.status}
-                          </span>
-                          <span className="text-xs px-2 py-0.5 rounded-md bg-slate-100 font-mono text-slate-700">
-                            Target: {c.granted_to_hospital_id || c.org_id}
-                          </span>
-                          {c.recorded_on_behalf && (
-                            <span className="text-[11px] px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200 flex items-center gap-1 font-medium">
-                              <UserCheck className="w-3 h-3" /> Recorded on Behalf
+                    return (
+                      <div
+                        key={c.id}
+                        className="p-4 rounded-lg border border-slate-200 hover:border-slate-300 transition-colors bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs"
+                      >
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="font-mono text-xs font-bold text-slate-800">{c.id}</span>
+                            <span
+                              className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${
+                                isActive
+                                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                                  : isRevoked
+                                  ? 'bg-rose-50 text-rose-700 border-rose-200'
+                                  : 'bg-amber-50 text-amber-700 border-amber-200'
+                              }`}
+                            >
+                              {c.status}
                             </span>
-                          )}
+                            <span className="text-xs px-2 py-0.5 rounded-md bg-slate-100 font-mono text-slate-700">
+                              Target: {c.granted_to_hospital_id || c.org_id}
+                            </span>
+                            {c.recorded_on_behalf && (
+                              <span className="text-[11px] px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200 flex items-center gap-1 font-medium">
+                                <UserCheck className="w-3 h-3" /> Recorded on Behalf
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-slate-700 font-medium">
+                            Purpose: {c.purpose || 'Continuity of fertility care'} &bull; Scope: {c.scope || 'ALL_RECORDS'}
+                          </p>
+                          <p className="text-xs text-slate-500">
+                            {c.granted_by ? `Granted by: ${c.granted_by}` : 'Authorized patient consent'}
+                            {c.expires_at && ` &bull; Expires: ${new Date(c.expires_at).toLocaleDateString()}`}
+                            {c.revoked_at && ` &bull; Revoked: ${new Date(c.revoked_at).toLocaleDateString()}`}
+                          </p>
                         </div>
-                        <p className="text-xs text-slate-700 font-medium">
-                          Purpose: {c.purpose || 'Continuity of fertility care'} &bull; Scope: {c.scope || 'ALL_RECORDS'}
-                        </p>
-                        <p className="text-xs text-slate-500">
-                          {c.granted_by ? `Granted by: ${c.granted_by}` : 'Authorized patient consent'}
-                          {c.expires_at && ` &bull; Expires: ${new Date(c.expires_at).toLocaleDateString()}`}
-                          {c.revoked_at && ` &bull; Revoked: ${new Date(c.revoked_at).toLocaleDateString()}`}
-                        </p>
-                      </div>
 
-                      <div className="flex items-center gap-3 shrink-0">
-                        {isActive && (
-                          <button
-                            type="button"
-                            onClick={() => handleRevokeConsent(c.id)}
-                            disabled={isActionLoading}
-                            className="px-2.5 py-1 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-md transition-colors disabled:opacity-50"
-                          >
-                            Revoke Consent
-                          </button>
-                        )}
-                        <span className="text-xs text-slate-400 font-mono">
-                          {c.granted_at ? new Date(c.granted_at).toLocaleDateString() : 'Recorded'}
-                        </span>
+                        <div className="flex items-center gap-3 shrink-0">
+                          {isActive && (
+                            <button
+                              type="button"
+                              onClick={() => handleRevokeConsent(c.id)}
+                              disabled={isActionLoading}
+                              className="px-2.5 py-1 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-md transition-colors disabled:opacity-50"
+                            >
+                              Revoke Consent
+                            </button>
+                          )}
+                          <span className="text-xs text-slate-400 font-mono">
+                            {c.granted_at ? new Date(c.granted_at).toLocaleDateString() : 'Recorded'}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* SECTION 2: Cross-Hospital Transfer Requests */}
           <div className="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 shadow-2xs space-y-4">

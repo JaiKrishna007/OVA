@@ -76,10 +76,10 @@ export const ClinicalLayout: React.FC<ClinicalLayoutProps> = ({ children }) => {
           ...(user?.role === 'hospital_admin' || user?.role === 'admin' || user?.role === 'doctor' || user?.role === 'staff'
             ? [
                 {
-                  name: 'Transfers & Consents',
+                  name: 'Hospital Transfers',
                   path: '/transfers',
                   icon: ArrowRightLeft,
-                  description: 'Cross-hospital transfer requests & consents',
+                  description: 'Cross-hospital patient transfer requests',
                 },
               ]
             : []),

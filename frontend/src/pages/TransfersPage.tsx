@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { transfersApi, consentsApi, patientsApi, ApiClientError } from '../services/api';
+import { transfersApi, patientsApi, ApiClientError } from '../services/api';
 import { useAuth } from '../context/AuthContext';
-import type { TransferRequestItem, ConsentItem, PatientListItem } from '../types/api';
+import type { TransferRequestItem, PatientListItem } from '../types/api';
 import {
   ArrowRightLeft,
   ShieldCheck,
@@ -13,7 +13,6 @@ import {
   ExternalLink,
   Loader2,
   Building2,
-  UserCheck,
   Trash2,
 } from 'lucide-react';
 
@@ -22,11 +21,9 @@ export const TransfersPage: React.FC = () => {
   const navigate = useNavigate();
 
   const userHospital = user?.hospital_id || user?.org_id || 'ORG-Y';
-  const isHospitalAdmin = user?.role === 'hospital_admin' || user?.role === 'admin';
 
-  const [activeTab, setActiveTab] = useState<'incoming' | 'outgoing' | 'consents'>('incoming');
+  const [activeTab, setActiveTab] = useState<'incoming' | 'outgoing'>('incoming');
   const [transfers, setTransfers] = useState<TransferRequestItem[]>([]);
-  const [consents, setConsents] = useState<ConsentItem[]>([]);
   const [patients, setPatients] = useState<PatientListItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isActionLoading, setIsActionLoading] = useState(false);
@@ -35,41 +32,31 @@ export const TransfersPage: React.FC = () => {
 
   // Modals
   const [isTransferModalOpen, setIsTransferModalOpen] = useState(false);
-  const [isConsentModalOpen, setIsConsentModalOpen] = useState(false);
 
   // Transfer Form State
   const [selectedPatientId, setSelectedPatientId] = useState('');
   const [toHospitalId, setToHospitalId] = useState(userHospital === 'ORG-Y' ? 'ORG-B' : 'ORG-Y');
   const [transferReason, setTransferReason] = useState('Continuity of care & clinic relocation');
 
-  // Consent Form State
-  const [consentPatientId, setConsentPatientId] = useState('');
-  const [consentTargetHospital, setConsentTargetHospital] = useState(userHospital === 'ORG-Y' ? 'ORG-B' : 'ORG-Y');
-  const [consentPurpose, setConsentPurpose] = useState('Continuity of fertility care');
-  const [consentScope, setConsentScope] = useState('ALL_RECORDS');
-
   const loadData = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const [transfersData, consentsData, patientsData] = await Promise.all([
+      const [transfersData, patientsData] = await Promise.all([
         transfersApi.listTransfers({}),
-        consentsApi.listConsents(),
         patientsApi.search().catch(() => []),
       ]);
       setTransfers(transfersData || []);
-      setConsents(consentsData || []);
       setPatients(patientsData || []);
 
       if (patientsData && patientsData.length > 0) {
         setSelectedPatientId(patientsData[0].id);
-        setConsentPatientId(patientsData[0].id);
       }
     } catch (err) {
       if (err instanceof ApiClientError) {
         setError(err.message);
       } else {
-        setError('Failed to load transfers and consents data.');
+        setError('Failed to load transfers data.');
       }
     } finally {
       setIsLoading(false);
@@ -179,43 +166,6 @@ export const TransfersPage: React.FC = () => {
     }
   };
 
-  const handleRecordConsentSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!consentPatientId) return;
-    setIsActionLoading(true);
-    setError(null);
-    try {
-      await consentsApi.recordConsent({
-        patient_id: consentPatientId,
-        target_hospital_id: consentTargetHospital,
-        purpose: consentPurpose,
-        scope: consentScope,
-        recorded_on_behalf: isHospitalAdmin,
-      });
-      setSuccessMessage('Patient consent successfully recorded.');
-      setIsConsentModalOpen(false);
-      await loadData();
-    } catch (err: any) {
-      setError(err?.message || 'Failed to record patient consent.');
-    } finally {
-      setIsActionLoading(false);
-    }
-  };
-
-  const handleRevokeConsent = async (consentId: string) => {
-    if (!window.confirm('Are you sure you want to revoke this consent? Hospital access will become REVOKED going forward.')) return;
-    setIsActionLoading(true);
-    setError(null);
-    try {
-      await consentsApi.revokeConsent(consentId);
-      setSuccessMessage('Consent revoked. Hospital access terminated.');
-      await loadData();
-    } catch (err: any) {
-      setError(err?.message || 'Failed to revoke consent.');
-    } finally {
-      setIsActionLoading(false);
-    }
-  };
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
@@ -229,24 +179,19 @@ export const TransfersPage: React.FC = () => {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl font-bold text-slate-900 tracking-tight">
-                  Hospital Transfers & Patient Consents
+                  Hospital Transfers
                 </h1>
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#FFDAB9]/60 text-[#822828] border border-[#F8AD9D]">
                   {userHospital}
                 </span>
               </div>
               <p className="text-xs text-slate-600 mt-1">
-                Cross-hospital record exchange, active patient consent governance, and atomic care transfers
+                Cross-hospital record exchange and atomic care transfers
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2.5 flex-wrap">
-            <div className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl shadow-2xs">
-              <ShieldCheck className="w-4 h-4 text-[#F08080]" />
-              <span>Patient-Exclusive Consent Authority</span>
-            </div>
-
             <button
               type="button"
               onClick={handleClearAllTransfers}
@@ -269,7 +214,7 @@ export const TransfersPage: React.FC = () => {
         </div>
 
         {/* Metrics Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-[#F8AD9D]/30">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 pt-5 border-t border-[#F8AD9D]/30">
           <div className="bg-white/80 backdrop-blur-xs rounded-xl p-3 border border-slate-200/80 shadow-2xs">
             <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Incoming Requests</div>
             <div className="text-xl font-black text-slate-900 mt-0.5 flex items-center gap-2">
@@ -299,14 +244,6 @@ export const TransfersPage: React.FC = () => {
             <div className="text-xl font-black text-emerald-700 mt-0.5 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               {completedCount}
-            </div>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-xs rounded-xl p-3 border border-slate-200/80 shadow-2xs">
-            <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Active Consents</div>
-            <div className="text-xl font-black text-[#822828] mt-0.5 flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#F08080]" />
-              {consents.filter((c) => c.status === 'ACTIVE').length}
             </div>
           </div>
         </div>
@@ -357,25 +294,13 @@ export const TransfersPage: React.FC = () => {
           <Send className="w-4 h-4 text-[#F08080]" />
           <span>Outgoing Transfers ({outgoingTransfers.length})</span>
         </button>
-
-        <button
-          onClick={() => setActiveTab('consents')}
-          className={`flex items-center gap-2 px-4 py-2.5 text-xs font-bold border-b-2 transition-all cursor-pointer ${
-            activeTab === 'consents'
-              ? 'border-[#F08080] text-[#822828] bg-[#FFF5F2]/50'
-              : 'border-transparent text-slate-600 hover:text-slate-900'
-          }`}
-        >
-          <ShieldCheck className="w-4 h-4 text-[#F08080]" />
-          <span>Patient Consents ({consents.length})</span>
-        </button>
       </div>
 
       {/* Loading */}
       {isLoading ? (
         <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center shadow-2xs">
           <Loader2 className="w-6 h-6 text-[#F08080] animate-spin mx-auto mb-2" />
-          <p className="text-xs font-semibold text-slate-600">Loading transfers and consents...</p>
+          <p className="text-xs font-semibold text-slate-600">Loading transfers...</p>
         </div>
       ) : (
         <>
@@ -595,97 +520,7 @@ export const TransfersPage: React.FC = () => {
             </div>
           )}
 
-          {/* TAB 3: PATIENT CONSENTS */}
-          {activeTab === 'consents' && (
-            <div className="space-y-4">
-              <div className="p-4 bg-[#FFF5F2] border border-[#F8AD9D]/50 rounded-2xl text-xs text-[#822828] flex items-center gap-3">
-                <ShieldCheck className="w-5 h-5 text-[#F08080] shrink-0" />
-                <span>
-                  <strong>Patient-Exclusive Authority:</strong> Granting medical data access and authorizing cross-hospital transfers is held exclusively by the patient. Hospital staff, doctors, and administrators cannot grant consent on behalf of patients.
-                </span>
-              </div>
 
-              {consents.length === 0 ? (
-                <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center shadow-2xs">
-                  <ShieldCheck className="w-8 h-8 text-slate-300 mx-auto mb-3" />
-                  <p className="text-sm font-bold text-slate-800">No patient consents on file</p>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Consents will be displayed once authorized by patients directly in their portal.
-                  </p>
-                </div>
-              ) : (
-                <div className="space-y-3.5">
-                  {consents.map((c) => {
-                    const isActive = c.status === 'ACTIVE';
-
-                    return (
-                      <div
-                        key={c.id}
-                        className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4"
-                      >
-                        <div className="space-y-1.5">
-                          <div className="flex items-center gap-2.5 flex-wrap">
-                            <span className="font-mono text-xs font-bold text-slate-900 bg-slate-100 px-2.5 py-1 rounded-lg">
-                              {c.id}
-                            </span>
-                            <span
-                              className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
-                                isActive
-                                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                  : 'bg-rose-50 text-rose-700 border-rose-200'
-                              }`}
-                            >
-                              {c.status}
-                            </span>
-                            <span className="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 font-mono text-slate-700">
-                              Target: {c.granted_to_hospital_id || c.org_id}
-                            </span>
-                            {c.recorded_on_behalf && (
-                              <span className="text-[11px] px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200 flex items-center gap-1 font-medium">
-                                <UserCheck className="w-3 h-3" /> On Behalf of Patient
-                              </span>
-                            )}
-                          </div>
-
-                          <div className="text-xs text-slate-700">
-                            Patient: <strong className="font-bold text-slate-900">{c.patient_id}</strong> &bull; Purpose:{' '}
-                            {c.purpose || 'Continuity of fertility care'} &bull; Scope: {c.scope || 'ALL_RECORDS'}
-                          </div>
-
-                          <p className="text-xs text-slate-500">
-                            {c.granted_by ? `Authorized by: ${c.granted_by}` : 'Patient consent record'} &bull; Granted:{' '}
-                            {new Date(c.granted_at).toLocaleDateString()}
-                          </p>
-                        </div>
-
-                        <div className="flex items-center gap-2.5 shrink-0">
-                          {isActive && (
-                            <button
-                              type="button"
-                              onClick={() => handleRevokeConsent(c.id)}
-                              disabled={isActionLoading}
-                              className="px-3.5 py-1.5 text-xs font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl transition-colors cursor-pointer"
-                            >
-                              Revoke Consent
-                            </button>
-                          )}
-
-                          <button
-                            type="button"
-                            onClick={() => navigate(`/patients/${c.patient_id}`)}
-                            className="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
-                          >
-                            <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
-                            <span>Patient</span>
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          )}
         </>
       )}
 
@@ -792,95 +627,7 @@ export const TransfersPage: React.FC = () => {
         </div>
       )}
 
-      {/* MODAL 2: GRANT CONSENT */}
-      {isConsentModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-slate-200 max-w-lg w-full p-6 shadow-xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>Record Patient Transfer Consent</span>
-              </h3>
-              <button onClick={() => setIsConsentModalOpen(false)} className="text-slate-400 hover:text-slate-600 font-bold">&times;</button>
-            </div>
 
-            <form onSubmit={handleRecordConsentSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Patient</label>
-                <select
-                  value={consentPatientId}
-                  onChange={(e) => setConsentPatientId(e.target.value)}
-                  className="w-full text-xs p-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#F08080]/30 outline-none"
-                  required
-                >
-                  {patients.map((p) => (
-                    <option key={p.id} value={p.id}>
-                      {p.name} ({p.id})
-                    </option>
-                  ))}
-                  {patients.length === 0 && (
-                    <option value="P-101">Priya S. (P-101)</option>
-                  )}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Grant Consent To Hospital</label>
-                <select
-                  value={consentTargetHospital}
-                  onChange={(e) => setConsentTargetHospital(e.target.value)}
-                  className="w-full text-xs p-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#F08080]/30 outline-none"
-                  required
-                >
-                  <option value="ORG-B">Hospital B (ORG-B - Receiving Hospital)</option>
-                  <option value="ORG-Y">Hospital A (ORG-Y - Sending Hospital)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Consent Purpose</label>
-                <input
-                  type="text"
-                  value={consentPurpose}
-                  onChange={(e) => setConsentPurpose(e.target.value)}
-                  className="w-full text-xs p-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#F08080]/30 outline-none"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Scope</label>
-                <select
-                  value={consentScope}
-                  onChange={(e) => setConsentScope(e.target.value)}
-                  className="w-full text-xs p-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#F08080]/30 outline-none"
-                  required
-                >
-                  <option value="ALL_RECORDS">ALL_RECORDS (Complete cycle, stimulation & lab records)</option>
-                  <option value="CYCLE_ONLY">CYCLE_ONLY (Specific cycle only)</option>
-                </select>
-              </div>
-
-              <div className="flex justify-end gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setIsConsentModalOpen(false)}
-                  className="px-4 py-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={isActionLoading}
-                  className="px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-2xs flex items-center gap-1.5"
-                >
-                  {isActionLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : 'Record Consent'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

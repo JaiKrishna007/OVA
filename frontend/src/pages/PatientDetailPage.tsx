@@ -697,7 +697,7 @@ export const PatientDetailPage: React.FC = () => {
               }`}
             >
               <ArrowRightLeft className="w-3.5 h-3.5 text-[#F08080]" />
-              <span>Transfers & Consents</span>
+              <span>{isPatient ? 'Transfers & Consents' : 'Transfers'}</span>
             </button>
 
             {!isPatient && (
