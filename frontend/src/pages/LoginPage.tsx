@@ -164,11 +164,10 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickSelect('patient.priya')}
-                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
-                  username === 'patient.priya'
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${username === 'patient.priya'
                     ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
                     : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#822828]">
                   <HeartPulse className="w-3.5 h-3.5 text-[#F08080]" />
@@ -180,11 +179,10 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickSelect('patient.p102')}
-                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
-                  username === 'patient.p102'
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${username === 'patient.p102'
                     ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
                     : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#822828]">
                   <HeartPulse className="w-3.5 h-3.5 text-[#F08080]" />
@@ -196,11 +194,10 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickSelect('patient.p105')}
-                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
-                  username === 'patient.p105'
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${username === 'patient.p105'
                     ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
                     : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#822828]">
                   <HeartPulse className="w-3.5 h-3.5 text-[#F08080]" />
@@ -212,11 +209,10 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickSelect('admin.a')}
-                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
-                  username === 'admin.a'
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${username === 'admin.a'
                     ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
                     : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-indigo-700">
                   <Building2 className="w-3.5 h-3.5 text-indigo-600" />
@@ -228,11 +224,10 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickSelect('dr.rao')}
-                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
-                  username === 'dr.rao'
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${username === 'dr.rao'
                     ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
                     : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-700">
                   <Stethoscope className="w-3.5 h-3.5 text-emerald-600" />
@@ -244,11 +239,10 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickSelect('nurse.devi')}
-                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
-                  username === 'nurse.devi'
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${username === 'nurse.devi'
                     ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
                     : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-sky-700">
                   <User className="w-3.5 h-3.5 text-sky-600" />
@@ -260,11 +254,10 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickSelect('admin')}
-                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
-                  username === 'admin'
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${username === 'admin'
                     ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
                     : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-purple-700">
                   <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
@@ -276,11 +269,10 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickSelect('dr.menon')}
-                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${
-                  username === 'dr.menon'
+                className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer ${username === 'dr.menon'
                     ? 'border-[#F08080] bg-[#FFF0ED] text-[#822828] font-bold ring-2 ring-[#F8AD9D]/40 shadow-peach-xs'
                     : 'border-slate-200/80 bg-white hover:bg-[#FFF9F7] text-slate-700 hover:border-[#FBC4AB]'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-teal-700">
                   <Stethoscope className="w-3.5 h-3.5 text-teal-600" />

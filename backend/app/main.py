@@ -39,6 +39,23 @@ def create_app() -> FastAPI:
         version="0.1.0",
     )
 
+    # Ensure database schema exists and auto-seed if empty
+    try:
+        from app.db.session import create_all, engine
+        from sqlalchemy import inspect, select
+        from app.models.user import User
+        from app.services.ingestion.seed_loader import load_seed_data
+        from sqlalchemy.orm import Session
+
+        create_all()
+        with Session(engine) as session:
+            has_users = session.scalar(select(User).limit(1))
+            if not has_users:
+                load_seed_data()
+    except Exception as e:
+        import logging
+        logging.getLogger("app.main").warning(f"Database auto-init warning: {e}")
+
     # Security & Request Tracking Middleware
     app.add_middleware(SecurityAndRequestIdMiddleware)
     app.add_middleware(
