@@ -33,8 +33,10 @@ import type {
   AuditLogItem,
 } from '../types/api';
 
-const API_ORIGIN = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
-const BASE_URL = API_ORIGIN ? `${API_ORIGIN}/api/v1` : '/api/v1';
+const rawApiUrl = (import.meta.env.VITE_API_URL || '').trim().replace(/\/+$/, '');
+const BASE_URL = rawApiUrl
+  ? (rawApiUrl.endsWith('/api/v1') ? rawApiUrl : `${rawApiUrl}/api/v1`)
+  : '/api/v1';
 
 export class ApiClientError extends Error {
   code: string;
@@ -64,29 +66,61 @@ async function request<T>(
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${BASE_URL}${endpoint}`, {
-    ...options,
-    headers,
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${BASE_URL}${endpoint}`, {
+      ...options,
+      headers,
+    });
+  } catch (netErr: unknown) {
+    const errorMsg = netErr instanceof Error ? netErr.message : 'Network connection failed';
+    throw new ApiClientError(
+      0,
+      'NETWORK_ERROR',
+      `Cannot connect to backend server (${BASE_URL}): ${errorMsg}. Check your backend deployment status and VITE_API_URL.`
+    );
+  }
 
   if (!response.ok) {
     let errorData: ApiErrorResponse | null = null;
+    let rawText = '';
     try {
-      errorData = await response.json();
+      rawText = await response.text();
+      errorData = JSON.parse(rawText);
     } catch {
       // response wasn't JSON
     }
 
     const code = errorData?.error?.code || `HTTP_${response.status}`;
-    const message = errorData?.error?.message || response.statusText || 'An unexpected error occurred';
-    const requestId = errorData?.error?.request_id;
+    let message = errorData?.error?.message;
+    if (!message) {
+      if (response.status === 404) {
+        message = `Backend API not reached (HTTP 404). Ensure VITE_API_URL is configured in Vercel settings and points to your live backend.`;
+      } else if (response.status === 502 || response.status === 503 || response.status === 504) {
+        message = `Backend is starting up or temporarily unavailable (HTTP ${response.status}). If using Render free tier, please wait 30-60 seconds for the server to wake up and retry.`;
+      } else if (response.status === 401 || response.status === 403) {
+        message = 'Invalid username or password.';
+      } else {
+        message = response.statusText || (rawText ? rawText.slice(0, 120) : '') || `Request failed with status ${response.status}.`;
+      }
+    }
 
+    const requestId = errorData?.error?.request_id;
     throw new ApiClientError(response.status, code, message, requestId);
   }
 
   // Handle 204 No Content
   if (response.status === 204) {
     return {} as T;
+  }
+
+  const contentType = response.headers.get('content-type') || '';
+  if (!contentType.includes('application/json')) {
+    throw new ApiClientError(
+      response.status,
+      'NON_JSON_RESPONSE',
+      `Received HTML instead of JSON. Ensure VITE_API_URL is set in Vercel to your deployed backend URL (e.g. https://your-backend.onrender.com).`
+    );
   }
 
   return response.json();
