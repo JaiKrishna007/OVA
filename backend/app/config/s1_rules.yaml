@@ -1,0 +1,145 @@
+# S1 Clinical Recommendation & Safety Filter Rules (Kernel Prime'26, Section 16)
+# Safety Rule S1: Never recommend dosing, protocols, diagnoses, or treatment.
+# Deterministic classifier BLOCKS recommendation-seeking questions and ALLOWS documented-fact lookups.
+# Ambiguous questions are blocked with a clarifying hint ("Try asking what is documented").
+
+version: "1.0.0"
+
+block_message: "I can only report what is documented in the records. I cannot provide clinical recommendations."
+ambiguous_hint: "Try asking what is documented"
+
+# Recommendation-seeking rules (Evaluated first; ANY match causes decision: BLOCK)
+block_rules:
+  - id: S1_BLOCK_SHOULD
+    description: "Questions containing 'should' seeking prescriptive clinical advice"
+    patterns:
+      - "(?i)\\bshould\\b"
+      - "(?i)\\bshouldn't\\b"
+      - "(?i)\\bshould\\s+not\\b"
+
+  - id: S1_BLOCK_RECOMMEND
+    description: "Direct requests for recommendations"
+    patterns:
+      - "(?i)\\brecommend\\b"
+      - "(?i)\\brecommendation\\b"
+      - "(?i)\\brecommendations\\b"
+      - "(?i)\\brecommending\\b"
+      - "(?i)\\brecommended\\s+protocol\\b"
+
+  - id: S1_BLOCK_ADVISE
+    description: "Direct requests for medical advice or guidance"
+    patterns:
+      - "(?i)\\badvise\\b"
+      - "(?i)\\badvice\\b"
+      - "(?i)\\badvising\\b"
+      - "(?i)\\badvisable\\b"
+
+  - id: S1_BLOCK_DOSE_CHANGE
+    description: "Requests to increase, decrease, adjust, stop, or start medications or doses"
+    patterns:
+      - "(?i)\\b(?:increase|decrease|adjust|stop|start)\\b.*\\b(?:dose|dosage|medication|gonal|rec-fsh|menopur|cetrorelix|decapeptyl|letrozole|clomid|progesterone|aspirin)\\b"
+      - "(?i)\\b(?:dose|dosage|medication|gonal|rec-fsh|menopur|cetrorelix|decapeptyl|letrozole|clomid|progesterone|aspirin)\\b.*\\b(?:increase|decrease|adjust|stop|start)\\b"
+      - "(?i)\\b(?:can|could|shall|may)\\s+(?:we|i|she|the\\s+doctor|patient)\\s+(?:increase|decrease|adjust|stop|start)\\b"
+      - "(?i)\\b(?:ought\\s+to|need\\s+to|time\\s+to)\\s+(?:increase|decrease|adjust|stop|start)\\b"
+      - "(?i)\\b(?:increase|decrease|adjust)\\s+(?:the\\s+)?(?:dose|dosage)\\b"
+
+  - id: S1_BLOCK_WHAT_NEXT
+    description: "Questions asking what to do next or next clinical steps"
+    patterns:
+      - "(?i)\\bwhat\\s+next\\b"
+      - "(?i)\\bwhat\\s+should\\s+(?:we|i|she|the\\s+doctor)\\s+do\\b"
+      - "(?i)\\bwhat\\s+is\\s+the\\s+next\\s+step\\b"
+      - "(?i)\\bnext\\s+treatment\\s+step\\b"
+      - "(?i)\\bwhere\\s+do\\s+we\\s+go\\s+from\\s+here\\b"
+
+  - id: S1_BLOCK_BEST_PROTOCOL
+    description: "Questions seeking selection of best/optimal protocol or drug"
+    patterns:
+      - "(?i)\\bbest\\s+protocol\\b"
+      - "(?i)\\bbest\\s+treatment\\b"
+      - "(?i)\\bbest\\s+option\\b"
+      - "(?i)\\bbest\\s+(?:for|to\\s+use)\\b"
+      - "(?i)\\b(?:protocol|treatment|drug|medication|choice)\\s+is\\s+best\\b"
+      - "(?i)\\bwhich\\s+protocol\\s+(?:is\\s+best|should\\s+we|to\\s+use)\\b"
+      - "(?i)\\boptimal\\s+(?:protocol|treatment|dose|stimulation|drug|choice|option)\\b"
+      - "(?i)\\bwhich\\s+drug\\s+is\\s+better\\b"
+
+  - id: S1_BLOCK_IS_IT_SAFE
+    description: "Questions asking for safety clearance or risk approval"
+    patterns:
+      - "(?i)\\bis\\s+it\\s+safe\\s+to\\b"
+      - "(?i)\\bis\\s+it\\s+safe\\s+for\\b"
+      - "(?i)\\bis\\s+it\\s+unsafe\\b"
+      - "(?i)\\bis\\s+it\\s+risky\\s+to\\b"
+      - "(?i)\\bwould\\s+it\\s+be\\s+safe\\b"
+
+  - id: S1_BLOCK_CAN_PROCEED
+    description: "Questions asking if the clinician/patient can proceed with procedure"
+    patterns:
+      - "(?i)\\bcan\\s+(?:she|we|the\\s+patient)\\s+proceed\\b"
+      - "(?i)\\bcan\\s+we\\s+go\\s+ahead\\b"
+      - "(?i)\\bready\\s+to\\s+proceed\\b"
+      - "(?i)\\beligible\\s+to\\s+proceed\\b"
+      - "(?i)\\bclearance\\s+to\\s+proceed\\b"
+
+  - id: S1_BLOCK_DIAGNOSE
+    description: "Requests for diagnostic evaluation or clinical opinion"
+    patterns:
+      - "(?i)\\bdiagnose\\b"
+      - "(?i)\\bdiagnosis\\s+of\\s+the\\s+patient\\b"
+      - "(?i)\\bwhat\\s+is\\s+the\\s+diagnosis\\b"
+      - "(?i)\\bdiagnostic\\s+impression\\b"
+
+  - id: S1_BLOCK_WHAT_IS_WRONG
+    description: "Questions asking what is wrong or why treatment failed"
+    patterns:
+      - "(?i)\\bwhat\\s+is\\s+wrong\\b"
+      - "(?i)\\bwhat's\\s+wrong\\b"
+      - "(?i)\\bwhat\\s+went\\s+wrong\\b"
+      - "(?i)\\bwhy\\s+did\\s+she\\s+fail\\b"
+      - "(?i)\\bwhy\\s+did\\s+.*(?:cycle|treatment|ivf|transfer|fet)\\s+fail\\b"
+      - "(?i)\\bwhy\\s+did\\s+it\\s+fail\\b"
+      - "(?i)\\bcause\\s+of\\s+failure\\b"
+
+  - id: S1_BLOCK_PRESCRIBE
+    description: "Requests for prescription or medication orders"
+    patterns:
+      - "(?i)\\bprescribe\\b"
+      - "(?i)\\bprescription\\b"
+      - "(?i)\\bwhat\\s+(?:dose|dosage|medication)\\s+to\\s+give\\b"
+      - "(?i)\\bhow\\s+much\\s+(?:menopur|gonal|rec-fsh|cetrorelix)\\s+to\\s+give\\b"
+      - "(?i)\\bsuggest\\s+a\\s+dose\\b"
+
+  - id: S1_BLOCK_PROMPT_INJECTION
+    description: "Instruction overrides and system prompt manipulation attempts"
+    patterns:
+      - "(?i)\\bignore\\s+(?:all\\s+)?(?:previous|prior|above)\\s+instructions\\b"
+      - "(?i)\\bdeveloper\\s+mode\\b"
+      - "(?i)\\bsystem\\s+prompt\\b"
+      - "(?i)\\byou\\s+are\\s+now\\s+an\\s+unrestricted\\b"
+
+# Fact-lookup rules (Evaluated after block rules; at least one must match for ALLOW)
+allow_rules:
+  - id: S1_ALLOW_DOCUMENTED_FACT
+    description: "Questions explicitly inquiring about documented or recorded clinical records"
+    patterns:
+      - "(?i)\\b(?:documented|recorded|reported|noted|written|found\\s+in\\s+records|on\\s+file|in\\s+the\\s+chart|in\\s+records|in\\s+notes)\\b"
+
+  - id: S1_ALLOW_DOCUMENTED_DOSE
+    description: "Questions asking for documented medication doses or administration history"
+    patterns:
+      - "(?i)\\b(?:what|which|when)\\b.*\\b(?:dose|dosage|administered|prescribed\\s+in|given\\s+in)\\b"
+      - "(?i)\\b(?:dose|dosage)\\b.*\\b(?:documented|recorded|reported|given|administered)\\b"
+
+  - id: S1_ALLOW_MEASURED_VALUE
+    description: "Questions asking for specific lab values, counts, or measurements"
+    patterns:
+      - "(?i)\\b(?:what|which|when|how\\s+many|how\\s+much|show|list|get)\\b.*\\b(?:value|result|level|count|measurement|reading|peak|baseline)\\b"
+      - "(?i)\\b(?:what\\s+is|what\\s+was|how\\s+many|how\\s+much)\\b.*\\b(?:e2|estradiol|amh|tsh|fsh|lh|hcg|beta-hcg|progesterone|oocytes|eggs|follicles|embryos|blastocysts|blood\\s+group|bmi|lining|endometrium)\\b"
+      - "(?i)\\bhow\\s+many\\s+oocytes\\b"
+      - "(?i)\\bwhat\\s+was\\s+the\\s+peak\\b"
+
+  - id: S1_ALLOW_HISTORICAL_QUERY
+    description: "Questions inquiring about patient medical history, test results, or physical details"
+    patterns:
+      - "(?i)\\b(?:what\\s+was|what\\s+is|what\\s+were|when\\s+was|did\\s+(?:she|the\\s+patient))\\b.*\\b(?:blood\\s+pressure|history|allergies|diagnosis|surgery|treatment|weight|height|cycle|report|scan|ultrasound|test)\\b"

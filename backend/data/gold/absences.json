@@ -1,0 +1,16 @@
+[
+  {
+    "gap_id": "GAP-P103-OPU",
+    "patient_id": "P-103",
+    "rule_id": "RULE_GAP_OPU_EMBRYOLOGY",
+    "expected_item": "embryology_record",
+    "description": "OPU conducted on 2026-04-10 without subsequent embryology report."
+  },
+  {
+    "gap_id": "GAP-P106-SEMEN",
+    "patient_id": "P-106",
+    "rule_id": "RULE_EXPECT_MALE_FACTOR_WORKUP",
+    "expected_item": "Partner Semen Analysis",
+    "description": "No partner semen analysis on file for infertility workup."
+  }
+]

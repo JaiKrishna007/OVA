@@ -1,0 +1,79 @@
+[
+  {
+    "id": "TE-P101-01",
+    "cycle_id": "CY-P101-1",
+    "kind": "trigger",
+    "date": "2026-01-22",
+    "detail": "Dual trigger Inj Decapeptyl 0.2 mg + Inj Ovitrelle 250 mcg given 2026-01-22 at 22:30",
+    "source_id": "REC-0102",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TE-P101-02",
+    "cycle_id": "CY-P101-1",
+    "kind": "opu",
+    "date": "2026-01-24",
+    "detail": "10 oocytes retrieved under transvaginal ultrasound guidance",
+    "source_id": "REC-0103",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TE-P103-01",
+    "cycle_id": "CY-P103-1",
+    "kind": "trigger",
+    "date": "2026-04-08",
+    "detail": "Inj Ovitrelle 250 mcg administered 2026-04-08 at 22:00",
+    "source_id": "REC-0302",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TE-P103-02",
+    "cycle_id": "CY-P103-1",
+    "kind": "opu",
+    "date": "2026-04-10",
+    "detail": "12 oocytes retrieved under ultrasound guidance",
+    "source_id": "REC-0303",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TE-P104-01",
+    "cycle_id": "CY-P104-1",
+    "kind": "opu",
+    "date": "2025-08-25",
+    "detail": "8 oocytes retrieved under ultrasound guidance",
+    "source_id": "REC-0402",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TE-P104-02",
+    "cycle_id": "CY-P104-2",
+    "kind": "trigger",
+    "date": "2026-02-15",
+    "detail": "Inj Decapeptyl 0.2 mg trigger administered 2026-02-15 at 22:00",
+    "source_id": "REC-0404",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TE-P104-03",
+    "cycle_id": "CY-P104-2",
+    "kind": "opu",
+    "date": "2026-02-17",
+    "detail": "14 oocytes retrieved in Cycle 2",
+    "source_id": "REC-0405",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  }
+]

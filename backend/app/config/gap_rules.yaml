@@ -1,0 +1,53 @@
+# Clinical Protocol Documentation Gap Rules Configuration
+# Reference: Section 16 of docs/PROJECT_SPEC.md
+# Note: These rules represent configurable clinical assumptions that must be reviewed by clinicians.
+
+rules:
+  - id: "RULE_GAP_OPU_EMBRYOLOGY"
+    name: "OPU to Embryology Report"
+    trigger: "OPU"
+    expected_item: "embryology_record"
+    window_days: 7
+    note: "Configurable clinical protocol assumption: OPU should be followed by an embryology assessment report within 7 days. Clinician review required."
+
+  - id: "RULE_GAP_ET_BETA_HCG"
+    name: "Embryo Transfer to Beta-hCG"
+    trigger: "EMBRYO_TRANSFER"
+    expected_item: "beta_hcg"
+    window_days: 16
+    note: "Configurable clinical protocol assumption: Embryo transfer requires serum beta-hCG pregnancy test within 14-16 days. Clinician review required."
+
+  - id: "RULE_GAP_STIM_TRIGGER_OR_CANCEL"
+    name: "Stimulation to Trigger/OPU or Cancellation"
+    trigger: "STIMULATION"
+    expected_item: "trigger_or_cancel"
+    window_days: 21
+    note: "Configurable clinical protocol assumption: Ovarian stimulation start requires trigger/OPU documentation or cycle cancellation within 21 days. Clinician review required."
+
+  - id: "RULE_GAP_POS_HCG_SCAN"
+    name: "Positive Beta-hCG to Early Pregnancy Scan"
+    trigger: "positive_beta_hcg"
+    expected_item: "early_pregnancy_scan"
+    window_days: 28
+    note: "Configurable clinical protocol assumption: Positive serum beta-hCG (> 5.0 mIU/mL) requires early viability ultrasound scan within 28 days. Clinician review required."
+
+  - id: "RULE_GAP_IUI_OUTCOME"
+    name: "IUI to Documented Outcome"
+    trigger: "IUI"
+    expected_item: "iui_outcome"
+    window_days: 18
+    note: "Configurable clinical protocol assumption: Intrauterine insemination cycle requires documented outcome (beta-hCG or menses) within 18 days. Clinician review required."
+
+  - id: "RULE_EXPECT_MALE_FACTOR_WORKUP"
+    name: "Partner Semen Analysis Workup"
+    trigger: "dor_or_unexplained_workup"
+    expected_item: "Partner Semen Analysis"
+    window_days: 90
+    note: "Configurable clinical protocol assumption: Comprehensive infertility workup expects partner semen analysis on file. Clinician review required."
+
+  - id: "RULE_EXPECT_TUBAL_PATENCY_WORKUP"
+    name: "Tubal Patency Assessment"
+    trigger: "male_factor_workup"
+    expected_item: "Hysterosalpingography (HSG) Report"
+    window_days: 90
+    note: "Configurable clinical protocol assumption: Tubal patency evaluation (HSG) expected prior to assisted reproduction. Clinician review required."

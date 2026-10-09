@@ -1,0 +1,26 @@
+[
+  {
+    "doctor_id": "USR-RAO",
+    "patient_id": "P-101"
+  },
+  {
+    "doctor_id": "USR-RAO",
+    "patient_id": "P-102"
+  },
+  {
+    "doctor_id": "USR-RAO",
+    "patient_id": "P-103"
+  },
+  {
+    "doctor_id": "USR-RAO",
+    "patient_id": "P-104"
+  },
+  {
+    "doctor_id": "USR-RAO",
+    "patient_id": "P-105"
+  },
+  {
+    "doctor_id": "USR-MENON",
+    "patient_id": "P-105"
+  }
+]

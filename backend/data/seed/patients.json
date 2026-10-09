@@ -1,0 +1,92 @@
+[
+  {
+    "id": "P-101",
+    "name": "Priya S.",
+    "dob": "1991-05-20",
+    "sex": "female",
+    "org_id": "ORG-Y",
+    "diagnosis": {
+      "primary": "Diminished Ovarian Reserve (DOR)",
+      "secondary": "Primary Infertility 2 yrs"
+    },
+    "partner_id": "PART-P101",
+    "blood_group": "B+",
+    "bmi": 22.4,
+    "phone": "+91-9845012341"
+  },
+  {
+    "id": "P-102",
+    "name": "Anitha R.",
+    "dob": "1995-08-14",
+    "sex": "female",
+    "org_id": "ORG-Y",
+    "diagnosis": {
+      "primary": "Polycystic Ovarian Syndrome (PCOS, Rotterdam phenotype A)",
+      "secondary": "Anovulatory Infertility 3 yrs"
+    },
+    "partner_id": "PART-P102",
+    "blood_group": "O+",
+    "bmi": 26.8,
+    "phone": "+91-9845012342"
+  },
+  {
+    "id": "P-103",
+    "name": "Meena K.",
+    "dob": "1986-11-03",
+    "sex": "female",
+    "org_id": "ORG-Y",
+    "diagnosis": {
+      "primary": "Unexplained Infertility",
+      "secondary": "Secondary Subfertility"
+    },
+    "partner_id": "PART-P103",
+    "blood_group": "A+",
+    "bmi": 23.1,
+    "phone": "+91-9845012343"
+  },
+  {
+    "id": "P-104",
+    "name": "Sunita D.",
+    "dob": "1993-03-29",
+    "sex": "female",
+    "org_id": "ORG-Y",
+    "diagnosis": {
+      "primary": "Bilateral Tubal Occlusion (Post-pelvic infection)",
+      "secondary": "Secondary Subfertility 4 yrs"
+    },
+    "partner_id": "PART-P104",
+    "blood_group": "AB+",
+    "bmi": 24.2,
+    "phone": "+91-9845012344"
+  },
+  {
+    "id": "P-105",
+    "name": "Kavya M.",
+    "dob": "1989-12-19",
+    "sex": "female",
+    "org_id": "ORG-Y",
+    "diagnosis": {
+      "primary": "Severe Male Factor Subfertility",
+      "secondary": "Oligoasthenoteratozoospermia"
+    },
+    "partner_id": "PART-P105",
+    "blood_group": "B-",
+    "bmi": 21.9,
+    "phone": "+91-9845012345"
+  },
+  {
+    "id": "P-106",
+    "name": "Lakshmi V.",
+    "dob": "1997-07-02",
+    "sex": "female",
+    "org_id": "ORG-Y",
+    "diagnosis": {
+      "primary": "Primary Infertility workup",
+      "secondary": "Irregular menses & Luteal insufficiency"
+    },
+    "partner_id": "PART-P106",
+    "blood_group": "O-",
+    "bmi": 20.5,
+    "phone": "+91-9845012346"
+  }
+]

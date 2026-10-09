@@ -1,0 +1,49 @@
+{
+  "imperative_keywords": [
+    "should",
+    "recommend",
+    "recommends",
+    "recommended",
+    "recommending",
+    "consider",
+    "considering",
+    "suggest",
+    "suggests",
+    "suggested",
+    "prescribe",
+    "prescribing",
+    "increase",
+    "decrease",
+    "switch to",
+    "must take",
+    "ought to",
+    "advise",
+    "advising",
+    "advised to start",
+    "advised to stop",
+    "indicated for treatment",
+    "plan to start",
+    "warrants",
+    "titrate"
+  ],
+  "dosing_advice_patterns": [
+    "(?i)\\b(?:increase|decrease|titrate|adjust|switch|step\\s+up|step\\s+down)\\s+(?:dose|dosage|medication|fsh|hmg|letrozole|clomid|progesterone|gonadotropin)",
+    "(?i)\\b(?:start|commence|administer|take)\\s+\\d+\\s*(?:mg|mcg|iu|IU|ml|mL|g)\\b",
+    "(?i)\\b(?:dose|dosing)\\s+of\\s+\\d+\\s*(?:mg|mcg|iu|IU|ml|mL)\\s+(?:should|recommended|indicated)",
+    "(?i)\\bconsider\\s+(?:increasing|decreasing|adding|stopping|switching)",
+    "(?i)\\b(?:step\\s+up|step\\s+down)\\b"
+  ],
+  "treatment_recommendation_patterns": [
+    "(?i)\\b(?:should\\s+undergo|recommend\\s+proceeding\\s+with|consider\\s+starting)\\b",
+    "(?i)\\b(?:switch|change)\\s+protocol\\s+to\\b",
+    "(?i)\\b(?:patient\\s+should|couple\\s+should|clinician\\s+should)\\b",
+    "(?i)\\b(?:may\\s+benefit\\s+from|would\\s+benefit\\s+from)\\b",
+    "(?i)\\bcandidate\\s+for\\b",
+    "(?i)\\boptimal\\s+(?:strategy|protocol|treatment|approach)\\b",
+    "(?i)\\b(?:to\\s+be\\s+prescribed|should\\s+be\\s+prescribed)\\b"
+  ],
+  "new_diagnosis_patterns": [
+    "(?i)\\bdiagnose(?:d)?\\s+with\\b",
+    "(?i)\\bconfirm(?:s|ed)?\\s+diagnosis\\s+of\\b"
+  ]
+}

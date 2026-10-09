@@ -1,0 +1,72 @@
+[
+  {
+    "id": "EMB-P101-01",
+    "cycle_id": "CY-P101-1",
+    "embryo_label": "E1",
+    "day": 5,
+    "grade": "4AA",
+    "pgt_status": "not_performed",
+    "fate": "transferred",
+    "storage_location": null,
+    "source_id": "REC-0103",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "EMB-P101-02",
+    "cycle_id": "CY-P101-1",
+    "embryo_label": "E2",
+    "day": 5,
+    "grade": "4AB",
+    "pgt_status": "not_performed",
+    "fate": "frozen",
+    "storage_location": "Tank 2, Canister A, Cane 3",
+    "source_id": "REC-0103",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "EMB-P101-03",
+    "cycle_id": "CY-P101-1",
+    "embryo_label": "E3",
+    "day": 5,
+    "grade": "3BB",
+    "pgt_status": "not_performed",
+    "fate": "frozen",
+    "storage_location": "Tank 2, Canister A, Cane 3",
+    "source_id": "REC-0103",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "EMB-P104-01",
+    "cycle_id": "CY-P104-2",
+    "embryo_label": "C2-E1",
+    "day": 5,
+    "grade": "4AA",
+    "pgt_status": "not_performed",
+    "fate": "transferred",
+    "storage_location": "Tank 1, Canister B",
+    "source_id": "REC-0405",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "EMB-P104-02",
+    "cycle_id": "CY-P104-2",
+    "embryo_label": "C2-E2",
+    "day": 5,
+    "grade": "4AB",
+    "pgt_status": "not_performed",
+    "fate": "frozen",
+    "storage_location": "Tank 1, Canister B",
+    "source_id": "REC-0405",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  }
+]

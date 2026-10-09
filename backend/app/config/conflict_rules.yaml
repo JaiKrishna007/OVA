@@ -1,0 +1,116 @@
+# Clinical Conflict Detector Rules Configuration
+# Reference: Section 16 of docs/PROJECT_SPEC.md
+
+default:
+  window_days: 60
+  tolerance_absolute: null
+  tolerance_percent: 5.0
+  display_text: "Conflicting documented values. Clinician review required."
+
+fields:
+  amh:
+    canonical_name: "amh"
+    window_days: 90
+    tolerance_absolute: 0.1
+    tolerance_percent: null
+    allowed_units:
+      - "ng/mL"
+      - "ng/ml"
+
+  fsh:
+    canonical_name: "fsh"
+    window_days: 30
+    tolerance_absolute: 0.5
+    tolerance_percent: null
+    allowed_units:
+      - "mIU/mL"
+      - "miu/ml"
+      - "IU/L"
+      - "iu/l"
+
+  lh:
+    canonical_name: "lh"
+    window_days: 30
+    tolerance_absolute: 0.5
+    tolerance_percent: null
+    allowed_units:
+      - "mIU/mL"
+      - "miu/ml"
+      - "IU/L"
+      - "iu/l"
+
+  estradiol:
+    canonical_name: "estradiol"
+    window_days: 7
+    tolerance_absolute: 25.0
+    tolerance_percent: null
+    allowed_units:
+      - "pg/mL"
+      - "pg/ml"
+
+  progesterone:
+    canonical_name: "progesterone"
+    window_days: 7
+    tolerance_absolute: 1.0
+    tolerance_percent: null
+    allowed_units:
+      - "ng/mL"
+      - "ng/ml"
+
+  tsh:
+    canonical_name: "tsh"
+    window_days: 90
+    tolerance_absolute: 0.3
+    tolerance_percent: null
+    allowed_units:
+      - "mIU/L"
+      - "miu/l"
+      - "uIU/mL"
+      - "uiu/ml"
+
+  beta_hcg:
+    canonical_name: "beta_hcg"
+    window_days: 14
+    tolerance_absolute: 5.0
+    tolerance_percent: null
+    allowed_units:
+      - "mIU/mL"
+      - "miu/ml"
+      - "IU/L"
+      - "iu/l"
+
+  oocytes_retrieved:
+    canonical_name: "oocytes_retrieved"
+    window_days: 14
+    tolerance_absolute: 0.0
+    tolerance_percent: null
+    allowed_units: []
+
+  mature_oocytes_mii:
+    canonical_name: "mature_oocytes_mii"
+    window_days: 14
+    tolerance_absolute: 0.0
+    tolerance_percent: null
+    allowed_units: []
+
+  fertilized_2pn:
+    canonical_name: "fertilized_2pn"
+    window_days: 14
+    tolerance_absolute: 0.0
+    tolerance_percent: null
+    allowed_units: []
+
+  blastocysts_count:
+    canonical_name: "blastocysts_count"
+    window_days: 14
+    tolerance_absolute: 0.0
+    tolerance_percent: null
+    allowed_units: []
+
+  endometrial_thickness:
+    canonical_name: "endometrial_thickness"
+    window_days: 3
+    tolerance_absolute: 0.5
+    tolerance_percent: null
+    allowed_units:
+      - "mm"

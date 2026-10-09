@@ -1,0 +1,38 @@
+[
+  {
+    "id": "PRG-P101-01",
+    "cycle_id": "CY-P101-1",
+    "beta_hcg_value": 385.0,
+    "beta_hcg_date": "2026-02-12",
+    "result": "clinical",
+    "gestation_note": "Intrauterine viable pregnancy confirmed on beta-hCG (385.0 mIU/mL)",
+    "source_id": "REC-0104",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "PRG-P104-01",
+    "cycle_id": "CY-P104-1",
+    "beta_hcg_value": 0.5,
+    "beta_hcg_date": "2025-09-12",
+    "result": "negative",
+    "gestation_note": "Cycle 1 negative outcome (< 1.0 mIU/mL)",
+    "source_id": "REC-0403",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "PRG-P104-02",
+    "cycle_id": "CY-P104-2",
+    "beta_hcg_value": 412.0,
+    "beta_hcg_date": "2026-03-18",
+    "result": "clinical",
+    "gestation_note": "Cycle 2 positive clinical pregnancy (412.0 mIU/mL)",
+    "source_id": "REC-0406",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  }
+]

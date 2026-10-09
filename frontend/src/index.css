@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Exact Peach Sorbet Palette from Colour Palette/Peach Sorbet.pdf */
+  --color-peach-50: #FFF9F7;
+  --color-peach-100: #FFDAB9; /* Peach Puff / Warm Cream */
+  --color-peach-200: #FBC4AB; /* Pale Peach / Apricot */
+  --color-peach-300: #F8AD9D; /* Soft Peach / Salmon */
+  --color-peach-400: #F4978E; /* Vibrant Peach / Coral */
+  --color-peach-500: #F08080; /* Light Coral / Deep Peach (Primary Brand) */
+  --color-peach-600: #E06969;
+  --color-peach-700: #C95252;
+  --color-peach-800: #A83B3B;
+  --color-peach-900: #822828;
+}
+
+:root {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
+  background-color: #FFF9F7;
+  --font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #FFF9F7;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.012em;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Peach Sorbet Glow & Shadow Utilities */
+.shadow-peach-xs {
+  box-shadow: 0 1px 3px rgba(240, 128, 128, 0.12), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.shadow-peach-sm {
+  box-shadow: 0 2px 6px -1px rgba(240, 128, 128, 0.18), 0 1px 4px -1px rgba(0, 0, 0, 0.04);
+}
+.shadow-peach-md {
+  box-shadow: 0 6px 16px -2px rgba(240, 128, 128, 0.22), 0 2px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.shadow-peach-lg {
+  box-shadow: 0 12px 28px -4px rgba(240, 128, 128, 0.28), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Glassmorphism Accents */
+.glass-peach {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(248, 173, 157, 0.35);
+}
+
+.glass-peach-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 249, 247, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(251, 196, 171, 0.4);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fbf7f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #fbc4ab;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f8ad9d;
+}
+
+/* Taste Skill Micro-interactions */
+.btn-interactive {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-interactive:active {
+  transform: scale(0.98);
+}
+
+.card-interactive {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px -3px rgba(240, 128, 128, 0.22);
+}
+
+/* Subtle focus ring tailored to Peach Sorbet */
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(240, 128, 128, 0.22);
+}
+

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "TRF-P101-01",
+    "cycle_id": "CY-P101-1",
+    "date": "2026-01-29",
+    "kind": "fresh",
+    "embryo_ids": [
+      "EMB-P101-01"
+    ],
+    "endometrium_mm": 10.2,
+    "source_id": "REC-0104",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TRF-P104-01",
+    "cycle_id": "CY-P104-1",
+    "date": "2025-08-28",
+    "kind": "fresh",
+    "embryo_ids": [
+      "EMB-P104-01"
+    ],
+    "endometrium_mm": 9.0,
+    "source_id": "REC-0403",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TRF-P104-02",
+    "cycle_id": "CY-P104-2",
+    "date": "2026-03-04",
+    "kind": "frozen",
+    "embryo_ids": [
+      "EMB-P104-01"
+    ],
+    "endometrium_mm": 10.5,
+    "source_id": "REC-0406",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "TRF-P106-01",
+    "cycle_id": "CY-P106-1",
+    "date": "2026-04-26",
+    "kind": "fresh",
+    "embryo_ids": [
+      "EMB-P106-01"
+    ],
+    "endometrium_mm": 8.5,
+    "source_id": "REC-0604",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  }
+]

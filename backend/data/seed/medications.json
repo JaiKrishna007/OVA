@@ -1,0 +1,16 @@
+[
+  {
+    "id": "MED-P101-01",
+    "cycle_id": "CY-P101-1",
+    "name": "Gonal-F",
+    "dose": "225 IU",
+    "route": "subcutaneous",
+    "start_date": "2026-01-12",
+    "end_date": "2026-01-22",
+    "purpose": "Ovarian stimulation",
+    "source_id": "REC-0102",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  }
+]

@@ -1,0 +1,6 @@
+CLINICAL LAB REPORT
+Patient: Anitha R.
+Serum AMH: 4.2 ng/mL
+Date: 2024-05-15
+Method: ECLIA
+Nonce: ec519672e49c

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "FOL-P101-01",
+    "patient_id": "P-101",
+    "cycle_id": "CY-P101-1",
+    "kind": "scan",
+    "name": "Early Viability Ultrasound Scan",
+    "status": "pending",
+    "due_date": "2026-02-26",
+    "source_id": "REC-0104",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "FOL-P102-01",
+    "patient_id": "P-102",
+    "cycle_id": "CY-P102-1",
+    "kind": "lab",
+    "name": "Pre-stimulation Day 2 Estradiol & Progesterone Check",
+    "status": "pending",
+    "due_date": "2026-07-01",
+    "source_id": "REC-0204",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "id": "CY-P101-1",
+    "patient_id": "P-101",
+    "cycle_no": 1,
+    "type": "IVF",
+    "start_date": "2026-01-10",
+    "end_date": "2026-02-15",
+    "outcome": "Ongoing clinical pregnancy",
+    "origin_org": "ORG-Y",
+    "org_id": "ORG-Y",
+    "trust_status": "internal_verified",
+    "source_id": "REC-0101"
+  },
+  {
+    "id": "CY-P102-1",
+    "patient_id": "P-102",
+    "cycle_no": 1,
+    "type": "IVF",
+    "start_date": "2026-06-14",
+    "end_date": null,
+    "outcome": "In evaluation / Pre-stimulation",
+    "origin_org": "ORG-Y",
+    "org_id": "ORG-Y",
+    "trust_status": "internal_verified",
+    "source_id": "REC-0201"
+  },
+  {
+    "id": "CY-P103-1",
+    "patient_id": "P-103",
+    "cycle_no": 1,
+    "type": "IVF",
+    "start_date": "2026-03-28",
+    "end_date": null,
+    "outcome": "OPU completed, awaiting embryology",
+    "origin_org": "ORG-Y",
+    "org_id": "ORG-Y",
+    "trust_status": "internal_verified",
+    "source_id": "REC-0301"
+  },
+  {
+    "id": "CY-P104-1",
+    "patient_id": "P-104",
+    "cycle_no": 1,
+    "type": "IVF",
+    "start_date": "2025-08-10",
+    "end_date": "2025-09-15",
+    "outcome": "Negative beta-hCG (< 1.0 mIU/mL)",
+    "origin_org": "ORG-Y",
+    "org_id": "ORG-Y",
+    "trust_status": "internal_verified",
+    "source_id": "REC-0401"
+  },
+  {
+    "id": "CY-P104-2",
+    "patient_id": "P-104",
+    "cycle_no": 2,
+    "type": "IVF",
+    "start_date": "2026-02-05",
+    "end_date": "2026-03-20",
+    "outcome": "Ongoing clinical pregnancy (beta-hCG 412.0 mIU/mL)",
+    "origin_org": "ORG-Y",
+    "org_id": "ORG-Y",
+    "trust_status": "internal_verified",
+    "source_id": "REC-0404"
+  },
+  {
+    "id": "CY-P105-1",
+    "patient_id": "P-105",
+    "cycle_no": 1,
+    "type": "ICSI",
+    "start_date": "2026-05-10",
+    "end_date": null,
+    "outcome": "Pre-cycle workup complete, transfer requested",
+    "origin_org": "ORG-Y",
+    "org_id": "ORG-Y",
+    "trust_status": "internal_verified",
+    "source_id": "REC-0501"
+  },
+  {
+    "id": "CY-P106-1",
+    "patient_id": "P-106",
+    "cycle_no": 1,
+    "type": "IVF",
+    "start_date": "2026-04-15",
+    "end_date": null,
+    "outcome": "Inconclusive / Conflicting records",
+    "origin_org": "ORG-Y",
+    "org_id": "ORG-Y",
+    "trust_status": "internal_verified",
+    "source_id": "REC-0601"
+  }
+]

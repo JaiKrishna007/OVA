@@ -1,0 +1,54 @@
+[
+  {
+    "id": "OPU-P101-1",
+    "cycle_id": "CY-P101-1",
+    "date": "2026-01-24",
+    "oocytes_retrieved": 10,
+    "mii": 8,
+    "mi": 1,
+    "gv": 1,
+    "source_id": "REC-0103",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "OPU-P103-1",
+    "cycle_id": "CY-P103-1",
+    "date": "2026-04-10",
+    "oocytes_retrieved": 12,
+    "mii": null,
+    "mi": null,
+    "gv": null,
+    "source_id": "REC-0303",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "OPU-P104-1",
+    "cycle_id": "CY-P104-1",
+    "date": "2025-08-25",
+    "oocytes_retrieved": 8,
+    "mii": 6,
+    "mi": 1,
+    "gv": 1,
+    "source_id": "REC-0402",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "OPU-P104-2",
+    "cycle_id": "CY-P104-2",
+    "date": "2026-02-17",
+    "oocytes_retrieved": 14,
+    "mii": 10,
+    "mi": 2,
+    "gv": 2,
+    "source_id": "REC-0405",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  }
+]

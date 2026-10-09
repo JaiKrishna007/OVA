@@ -1,0 +1,10 @@
+CLINICAL LABORATORY REPORT
+Patient: Anitha R. (P-102)
+Date: 15 June 2026
+Serum AMH: 4.2 ng/mL
+Serum Progesterone: 18.4 ng/mL
+Serum Estradiol: 2450 pg/mL
+Endometrium: 9.5 mm
+Procedure: Ovum Pickup performed on 14-06-2026
+14 oocytes retrieved
+Nonce: c919b134c6ea

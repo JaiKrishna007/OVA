@@ -1,0 +1,7 @@
+LABORATORY DIAGNOSTICS REPORT
+Patient: Anitha R (P-102)
+Test: Serum Progesterone
+Value: 18.4 ng/mL
+Date: 2024-06-01
+Status: Normal Luteal Phase
+UID: 94ad274505ae

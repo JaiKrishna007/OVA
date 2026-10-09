@@ -1,0 +1,189 @@
+# Terminology dictionary for OVA clinical entity and unit canonicalization
+# Reference: Section 16 of docs/PROJECT_SPEC.md
+
+terms:
+  # Procedures
+  OPU:
+    canonical: "OPU"
+    synonyms:
+      - "OPU"
+      - "Ovum Pickup"
+      - "Ovum Pick Up"
+      - "Oocyte Retrieval"
+      - "Egg Retrieval"
+      - "Oocyte Pick-up"
+  EMBRYO_TRANSFER:
+    canonical: "EMBRYO_TRANSFER"
+    synonyms:
+      - "ET"
+      - "Embryo Transfer"
+      - "Fresh Embryo Transfer"
+      - "Fresh ET"
+  FET:
+    canonical: "FET"
+    synonyms:
+      - "FET"
+      - "Frozen Embryo Transfer"
+      - "Frozen Thawed Embryo Transfer"
+  IUI:
+    canonical: "IUI"
+    synonyms:
+      - "IUI"
+      - "Intrauterine Insemination"
+  OI:
+    canonical: "OI"
+    synonyms:
+      - "OI"
+      - "Ovulation Induction"
+  TRIGGER:
+    canonical: "TRIGGER"
+    synonyms:
+      - "Trigger"
+      - "Ovulation Trigger"
+      - "hCG Trigger"
+      - "Lupron Trigger"
+      - "Dual Trigger"
+      - "Trigger Injection"
+  STIMULATION:
+    canonical: "STIMULATION"
+    synonyms:
+      - "Stimulation"
+      - "Ovarian Stimulation"
+      - "Controlled Ovarian Stimulation"
+      - "COH"
+
+# Medication canonicalization
+drugs:
+  "gonal-f": "Gonal-F"
+  "gonal f": "Gonal-F"
+  "menopur": "Menopur"
+  "cetrotide": "Cetrotide"
+  "ovitrelle": "Ovitrelle"
+  "duphaston": "Duphaston"
+  "progynova": "Progynova"
+  "crinone": "Crinone"
+  "endometrin": "Endometrin"
+  "lupron": "Lupron"
+  "decapeptyl": "Decapeptyl"
+
+# Canonical units and allowed units per field
+fields:
+  amh:
+    canonical_name: "amh"
+    canonical_unit: "ng/mL"
+    allowed_units:
+      - "ng/mL"
+      - "ng/ml"
+  fsh:
+    canonical_name: "fsh"
+    canonical_unit: "mIU/mL"
+    allowed_units:
+      - "mIU/mL"
+      - "miu/ml"
+      - "IU/L"
+      - "iu/l"
+  lh:
+    canonical_name: "lh"
+    canonical_unit: "mIU/mL"
+    allowed_units:
+      - "mIU/mL"
+      - "miu/ml"
+      - "IU/L"
+      - "iu/l"
+  estradiol:
+    canonical_name: "estradiol"
+    canonical_unit: "pg/mL"
+    allowed_units:
+      - "pg/mL"
+      - "pg/ml"
+  progesterone:
+    canonical_name: "progesterone"
+    canonical_unit: "ng/mL"
+    allowed_units:
+      - "ng/mL"
+      - "ng/ml"
+  tsh:
+    canonical_name: "tsh"
+    canonical_unit: "mIU/L"
+    allowed_units:
+      - "mIU/L"
+      - "miu/l"
+      - "uIU/mL"
+      - "uiu/ml"
+  prolactin:
+    canonical_name: "prolactin"
+    canonical_unit: "ng/mL"
+    allowed_units:
+      - "ng/mL"
+      - "ng/ml"
+  beta_hcg:
+    canonical_name: "beta_hcg"
+    canonical_unit: "mIU/mL"
+    allowed_units:
+      - "mIU/mL"
+      - "miu/ml"
+      - "IU/L"
+      - "iu/l"
+  oocytes_retrieved:
+    canonical_name: "oocytes_retrieved"
+    canonical_unit: null
+    allowed_units: []
+  mature_oocytes_mii:
+    canonical_name: "mature_oocytes_mii"
+    canonical_unit: null
+    allowed_units: []
+  fertilized_2pn:
+    canonical_name: "fertilized_2pn"
+    canonical_unit: null
+    allowed_units: []
+  blastocysts_count:
+    canonical_name: "blastocysts_count"
+    canonical_unit: null
+    allowed_units: []
+  sperm_concentration:
+    canonical_name: "sperm_concentration"
+    canonical_unit: "M/mL"
+    allowed_units:
+      - "M/mL"
+      - "million/mL"
+      - "million/ml"
+      - "10^6/mL"
+  progressive_motility:
+    canonical_name: "progressive_motility"
+    canonical_unit: "%"
+    allowed_units:
+      - "%"
+  normal_morphology:
+    canonical_name: "normal_morphology"
+    canonical_unit: "%"
+    allowed_units:
+      - "%"
+  semen_volume:
+    canonical_name: "semen_volume"
+    canonical_unit: "mL"
+    allowed_units:
+      - "mL"
+      - "ml"
+  endometrial_thickness:
+    canonical_name: "endometrial_thickness"
+    canonical_unit: "mm"
+    allowed_units:
+      - "mm"
+
+# Unit casing canonicalization map
+unit_casing:
+  "ng/ml": "ng/mL"
+  "pg/ml": "pg/mL"
+  "miu/ml": "mIU/mL"
+  "miu/l": "mIU/L"
+  "iu/l": "IU/L"
+  "uiu/ml": "uIU/mL"
+  "m/ml": "M/mL"
+  "million/ml": "M/mL"
+  "million/ml": "M/mL"
+  "ml": "mL"
+  "%": "%"
+  "mm": "mm"
+  "mg": "mg"
+  "mcg": "mcg"
+  "iu": "IU"

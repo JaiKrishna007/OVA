@@ -1,0 +1,85 @@
+[
+  {
+    "id": "USR-RAO",
+    "username": "dr.rao",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "doctor",
+    "org_id": "ORG-Y",
+    "hospital_id": "ORG-Y"
+  },
+  {
+    "id": "USR-MENON",
+    "username": "dr.menon",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "doctor",
+    "org_id": "ORG-B",
+    "hospital_id": "ORG-B"
+  },
+  {
+    "id": "USR-HOSP-ADMIN-A",
+    "username": "admin.a",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "hospital_admin",
+    "org_id": "ORG-Y",
+    "hospital_id": "ORG-Y"
+  },
+  {
+    "id": "USR-HOSP-ADMIN-B",
+    "username": "admin.b",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "hospital_admin",
+    "org_id": "ORG-B",
+    "hospital_id": "ORG-B"
+  },
+  {
+    "id": "USR-DEVI",
+    "username": "nurse.devi",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "staff",
+    "org_id": "ORG-Y",
+    "hospital_id": "ORG-Y"
+  },
+  {
+    "id": "USR-ADMIN",
+    "username": "admin",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "admin",
+    "org_id": "ORG-Y",
+    "hospital_id": "ORG-Y"
+  },
+  {
+    "id": "USR-OVA-ADMIN",
+    "username": "ova.admin",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "ova_admin",
+    "org_id": "ORG-OVA",
+    "hospital_id": "ORG-OVA"
+  },
+  {
+    "id": "USR-PAT-101",
+    "username": "patient.priya",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "patient",
+    "org_id": "ORG-Y",
+    "hospital_id": "ORG-Y",
+    "patient_id": "P-101"
+  },
+  {
+    "id": "USR-PAT-102",
+    "username": "patient.p102",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "patient",
+    "org_id": "ORG-Y",
+    "hospital_id": "ORG-Y",
+    "patient_id": "P-102"
+  },
+  {
+    "id": "USR-PAT-105",
+    "username": "patient.p105",
+    "password_hash": "$2b$12$fYtXNOu1nlFy3/zuI7gQ0ejPlyvUduZ.dYjhYGPqj4X.0VcR22w0O",
+    "role": "patient",
+    "org_id": "ORG-Y",
+    "hospital_id": "ORG-Y",
+    "patient_id": "P-105"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "conflict_id": "CONF-P102-AMH",
+    "patient_id": "P-102",
+    "cycle_id": "CY-P102-1",
+    "field": "amh",
+    "value_a": "2.4 ng/mL",
+    "source_id_a": "REC-0201",
+    "hospital_a": "ORG-Y",
+    "date_a": "2026-06-14",
+    "value_b": "1.2 ng/mL",
+    "source_id_b": "REC-0202",
+    "hospital_b": "ORG-X",
+    "date_b": "2026-06-16",
+    "description": "Conflicting documented values. Clinician review required."
+  },
+  {
+    "conflict_id": "CONF-P106-HCG",
+    "patient_id": "P-106",
+    "cycle_id": "CY-P106-1",
+    "field": "beta_hcg",
+    "value_a": "145.0 mIU/mL",
+    "source_id_a": "REC-0601",
+    "hospital_a": "ORG-Y",
+    "date_a": "2026-05-10",
+    "value_b": "12.0 mIU/mL",
+    "source_id_b": "REC-0603",
+    "hospital_b": "ORG-B",
+    "date_b": "2026-05-12",
+    "description": "Conflicting documented values. Clinician review required."
+  }
+]

@@ -1,0 +1,198 @@
+[
+  {
+    "patient_id": "P-101",
+    "cycle_id": "CY-P101-1",
+    "field": "amh",
+    "value": "2.1",
+    "unit": "ng/mL",
+    "source_id": "REC-0101",
+    "span": {
+      "record_id": "REC-0101",
+      "start": 346,
+      "end": 349,
+      "text": "2.1"
+    }
+  },
+  {
+    "patient_id": "P-101",
+    "cycle_id": "CY-P101-1",
+    "field": "fsh",
+    "value": "6.2",
+    "unit": "mIU/mL",
+    "source_id": "REC-0101",
+    "span": {
+      "record_id": "REC-0101",
+      "start": 368,
+      "end": 371,
+      "text": "6.2"
+    }
+  },
+  {
+    "patient_id": "P-101",
+    "cycle_id": "CY-P101-1",
+    "field": "oocytes_retrieved",
+    "value": "10",
+    "unit": null,
+    "source_id": "REC-0103",
+    "span": {
+      "record_id": "REC-0103",
+      "start": 124,
+      "end": 126,
+      "text": "10"
+    }
+  },
+  {
+    "patient_id": "P-101",
+    "cycle_id": "CY-P101-1",
+    "field": "beta_hcg",
+    "value": "385.0",
+    "unit": "mIU/mL",
+    "source_id": "REC-0104",
+    "span": {
+      "record_id": "REC-0104",
+      "start": 528,
+      "end": 533,
+      "text": "385.0"
+    }
+  },
+  {
+    "patient_id": "P-102",
+    "cycle_id": "CY-P102-1",
+    "field": "amh",
+    "value": "2.4",
+    "unit": "ng/mL",
+    "source_id": "REC-0201",
+    "span": {
+      "record_id": "REC-0201",
+      "start": 416,
+      "end": 419,
+      "text": "2.4"
+    }
+  },
+  {
+    "patient_id": "P-102",
+    "cycle_id": "CY-P102-1",
+    "field": "amh",
+    "value": "1.2",
+    "unit": "ng/mL",
+    "source_id": "REC-0202",
+    "span": {
+      "record_id": "REC-0202",
+      "start": 294,
+      "end": 297,
+      "text": "1.2"
+    }
+  },
+  {
+    "patient_id": "P-102",
+    "cycle_id": "CY-P102-1",
+    "field": "lh",
+    "value": "12.8",
+    "unit": "mIU/mL",
+    "source_id": "REC-0201",
+    "span": {
+      "record_id": "REC-0201",
+      "start": 460,
+      "end": 464,
+      "text": "12.8"
+    }
+  },
+  {
+    "patient_id": "P-103",
+    "cycle_id": "CY-P103-1",
+    "field": "oocytes_retrieved",
+    "value": "12",
+    "unit": null,
+    "source_id": "REC-0303",
+    "span": {
+      "record_id": "REC-0303",
+      "start": 264,
+      "end": 266,
+      "text": "12"
+    }
+  },
+  {
+    "patient_id": "P-104",
+    "cycle_id": "CY-P104-1",
+    "field": "oocytes_retrieved",
+    "value": "8",
+    "unit": null,
+    "source_id": "REC-0402",
+    "span": {
+      "record_id": "REC-0402",
+      "start": 123,
+      "end": 124,
+      "text": "8"
+    }
+  },
+  {
+    "patient_id": "P-104",
+    "cycle_id": "CY-P104-2",
+    "field": "oocytes_retrieved",
+    "value": "14",
+    "unit": null,
+    "source_id": "REC-0405",
+    "span": {
+      "record_id": "REC-0405",
+      "start": 166,
+      "end": 168,
+      "text": "14"
+    }
+  },
+  {
+    "patient_id": "P-104",
+    "cycle_id": "CY-P104-2",
+    "field": "beta_hcg",
+    "value": "412.0",
+    "unit": "mIU/mL",
+    "source_id": "REC-0406",
+    "span": {
+      "record_id": "REC-0406",
+      "start": 279,
+      "end": 284,
+      "text": "412.0"
+    }
+  },
+  {
+    "patient_id": "P-105",
+    "cycle_id": "CY-P105-1",
+    "field": "amh",
+    "value": "2.6",
+    "unit": "ng/mL",
+    "source_id": "REC-0501",
+    "span": {
+      "record_id": "REC-0501",
+      "start": 497,
+      "end": 500,
+      "text": "2.6"
+    }
+  },
+  {
+    "patient_id": "P-106",
+    "cycle_id": "CY-P106-1",
+    "field": "beta_hcg",
+    "value": "145.0",
+    "unit": "mIU/mL",
+    "source_id": "REC-0601",
+    "span": {
+      "record_id": "REC-0601",
+      "start": 208,
+      "end": 213,
+      "text": "145.0"
+    }
+  },
+  {
+    "patient_id": "P-106",
+    "cycle_id": "CY-P106-1",
+    "field": "beta_hcg",
+    "value": "12.0",
+    "unit": "mIU/mL",
+    "source_id": "REC-0603",
+    "span": {
+      "record_id": "REC-0603",
+      "start": 202,
+      "end": 206,
+      "text": "12.0"
+    }
+  }
+]

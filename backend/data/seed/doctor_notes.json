@@ -1,0 +1,26 @@
+[
+  {
+    "id": "NOTE-P101-01",
+    "patient_id": "P-101",
+    "cycle_id": "CY-P101-1",
+    "date": "2026-02-12",
+    "author": "Dr. Ananya Rao",
+    "text": "Priya S. achieved positive pregnancy following fresh single blastocyst transfer (Grade 4AA). Repeat beta-hCG 385.0 mIU/mL. Continue progesterone support.",
+    "source_id": "REC-0104",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  },
+  {
+    "id": "NOTE-P102-01",
+    "patient_id": "P-102",
+    "cycle_id": "CY-P102-1",
+    "date": "2026-06-20",
+    "author": "Dr. Ananya Rao",
+    "text": "Reviewed multi-hospital AMH discrepancy (2.4 vs 1.2 ng/mL). Given high AFC of 26, patient will be stimulated carefully with antagonist protocol to avert OHSS.",
+    "source_id": "REC-0204",
+    "org_id": "ORG-Y",
+    "origin_org": "ORG-Y",
+    "trust_status": "internal_verified"
+  }
+]

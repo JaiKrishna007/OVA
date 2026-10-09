@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CNS-P105-01",
+    "patient_id": "P-105",
+    "org_id": "ORG-Y",
+    "granted_to_hospital_id": "ORG-B",
+    "purpose": "Transfer of fertility care to Bloom Reproductive Institute",
+    "scope": "ALL_RECORDS",
+    "consent_type": "treatment_transfer",
+    "status": "ACTIVE",
+    "granted_at": "2026-06-20T10:00:00Z",
+    "granted_by": "patient",
+    "recorded_on_behalf": false
+  }
+]
