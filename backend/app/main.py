@@ -42,7 +42,7 @@ def create_app() -> FastAPI:
     # Ensure database schema exists and auto-seed if empty
     try:
         from app.db.session import create_all, engine
-        from sqlalchemy import inspect, select
+        from sqlalchemy import select
         from app.models.user import User
         from app.services.ingestion.seed_loader import load_seed_data
         from sqlalchemy.orm import Session
@@ -51,7 +51,40 @@ def create_app() -> FastAPI:
         with Session(engine) as session:
             has_users = session.scalar(select(User).limit(1))
             if not has_users:
-                load_seed_data()
+                try:
+                    load_seed_data(drop_tables=False)
+                except Exception as seed_err:
+                    import logging
+                    import json
+                    from pathlib import Path
+                    from app.models.enums import UserRole
+                    from app.models.organization import Organization
+
+                    logging.getLogger("app.main").warning(f"Full seed loader failed, inserting direct users: {seed_err}")
+                    backend_dir = Path(__file__).resolve().parent.parent
+                    seed_dir = backend_dir / "data" / "seed"
+                    
+                    orgs_file = seed_dir / "organizations.json"
+                    if orgs_file.exists():
+                        with open(orgs_file, "r", encoding="utf-8") as f:
+                            for o in json.load(f):
+                                session.merge(Organization(id=o["id"], name=o["name"]))
+                        session.commit()
+
+                    users_file = seed_dir / "users.json"
+                    if users_file.exists():
+                        with open(users_file, "r", encoding="utf-8") as f:
+                            for u in json.load(f):
+                                session.merge(User(
+                                    id=u["id"],
+                                    username=u["username"],
+                                    password_hash=u["password_hash"],
+                                    role=UserRole(u["role"]),
+                                    org_id=u["org_id"],
+                                    hospital_id=u.get("hospital_id", u["org_id"]),
+                                    patient_id=u.get("patient_id"),
+                                ))
+                        session.commit()
     except Exception as e:
         import logging
         logging.getLogger("app.main").warning(f"Database auto-init warning: {e}")

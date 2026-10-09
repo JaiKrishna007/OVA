@@ -297,9 +297,14 @@ def validate_seed_data(raw_data: Dict[str, List[Dict[str, Any]]], gold_dir: Opti
     return errors
 
 
-def load_seed_data(seed_dir: Optional[str] = None, gold_dir: Optional[str] = None, target_engine=None) -> Dict[str, int]:
+def load_seed_data(
+    seed_dir: Optional[str] = None,
+    gold_dir: Optional[str] = None,
+    target_engine=None,
+    drop_tables: bool = True,
+) -> Dict[str, int]:
     """
-    Validates, drops, recreates schema, and loads seed data into the database.
+    Validates, drops (if drop_tables=True), recreates schema, and loads seed data into the database.
     Returns table row counts.
     """
     s_dir = seed_dir or os.path.join(backend_dir, "data", "seed")
@@ -315,7 +320,8 @@ def load_seed_data(seed_dir: Optional[str] = None, gold_dir: Optional[str] = Non
 
     # Drop all and recreate schema
     import app.models  # ensure all models (ConflictRecord, DocumentationGap, etc.) are registered for drop_all
-    Base.metadata.drop_all(bind=eng)
+    if drop_tables:
+        Base.metadata.drop_all(bind=eng)
     create_all(target_engine=eng)
 
     counts: Dict[str, int] = {}
