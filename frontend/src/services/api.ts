@@ -33,10 +33,31 @@ import type {
   AuditLogItem,
 } from '../types/api';
 
-const rawApiUrl = (import.meta.env.VITE_API_URL || '').trim().replace(/\/+$/, '');
-const BASE_URL = rawApiUrl
-  ? (rawApiUrl.endsWith('/api/v1') ? rawApiUrl : `${rawApiUrl}/api/v1`)
-  : '/api/v1';
+export function resolveBaseUrl(): string {
+  let url = (import.meta.env.VITE_API_URL || '').trim();
+  if (!url) return '/api/v1';
+
+  // If running over HTTPS in production and URL starts with http://, upgrade to https://
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:' && url.startsWith('http://')) {
+    url = url.replace(/^http:\/\//i, 'https://');
+  }
+
+  // Ensure protocol
+  if (!/^https?:\/\//i.test(url)) {
+    url = `https://${url}`;
+  }
+
+  // Strip trailing slashes and common copy-paste endpoint suffixes (health, docs, etc.)
+  url = url.replace(/\/+$/, '');
+  url = url.replace(/\/api\/v1\/(health|docs|openapi\.json)$/i, '');
+  url = url.replace(/\/api\/v1\/?$/i, '');
+  url = url.replace(/\/api\/?$/i, '');
+  url = url.replace(/\/+$/, '');
+
+  return `${url}/api/v1`;
+}
+
+export const BASE_URL = resolveBaseUrl();
 
 export class ApiClientError extends Error {
   code: string;

@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { FertilityBackground } from '../components/FertilityBackground';
 import { Baby3D } from '../components/Baby3D';
 import { HeartPulse, Lock, User, AlertCircle, ArrowRight, ShieldCheck, Stethoscope, Building2 } from 'lucide-react';
+import { BASE_URL } from '../services/api';
 
 export const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('dr.rao');
@@ -82,6 +83,7 @@ export const LoginPage: React.FC = () => {
               <div>
                 <strong className="font-semibold block">Authentication Failed</strong>
                 <span>{formError}</span>
+                <span className="block mt-1 text-[11px] text-rose-600/80 font-mono">Connecting to: {BASE_URL}</span>
               </div>
             </div>
           )}
