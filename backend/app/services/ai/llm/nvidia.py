@@ -72,7 +72,7 @@ class NvidiaClient(LLMClient):
         for attempt in range(1, max_attempts + 1):
             try:
                 req = urllib.request.Request(url, data=data_bytes, headers=headers)
-                with urllib.request.urlopen(req, timeout=35) as resp:
+                with urllib.request.urlopen(req, timeout=12) as resp:
                     resp_data = json.loads(resp.read().decode("utf-8"))
                     choices = resp_data.get("choices", [])
                     if not choices:

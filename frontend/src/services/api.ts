@@ -33,7 +33,8 @@ import type {
   AuditLogItem,
 } from '../types/api';
 
-const BASE_URL = '/api/v1';
+const API_ORIGIN = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+const BASE_URL = API_ORIGIN ? `${API_ORIGIN}/api/v1` : '/api/v1';
 
 export class ApiClientError extends Error {
   code: string;
